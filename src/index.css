@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --primary: 200 80% 40%;
+    --primary-light: 200 80% 50%;
+    --primary-dark: 200 80% 30%;
+    
+    --secondary: 215 100% 60%;
+    --secondary-light: 215 100% 70%;
+    --secondary-dark: 215 100% 50%;
+    
+    --accent: 152 80% 50%;
+    --accent-light: 152 80% 60%;
+    --accent-dark: 152 80% 40%;
+    
+    --success: 142 70% 45%;
+    --warning: 35 100% 50%;
+    --error: 0 90% 60%;
+    
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
+    
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+  }
+
+  body {
+    @apply bg-background text-foreground font-primary antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-secondary font-bold leading-tight;
+  }
+
+  /* Text size hierarchy */
+  h1 {
+    @apply text-3xl md:text-4xl;
+  }
+  
+  h2 {
+    @apply text-2xl md:text-3xl;
+  }
+  
+  h3 {
+    @apply text-xl md:text-2xl;
+  }
+  
+  p {
+    @apply leading-relaxed;
+  }
+
+  /* Focus styles */
+  :focus-visible {
+    @apply outline-none ring-2 ring-primary ring-offset-2;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors
+    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2
+    disabled:opacity-50 disabled:pointer-events-none ring-offset-background;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-white hover:bg-primary-dark;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-white hover:bg-secondary-dark;
+  }
+
+  .btn-outline {
+    @apply border border-gray-300 bg-background hover:bg-accent hover:text-accent-foreground;
+  }
+
+  .btn-ghost {
+    @apply hover:bg-accent/10 hover:text-accent-foreground;
+  }
+
+  .card {
+    @apply rounded-lg border bg-card text-card-foreground shadow-sm;
+  }
+  
+  .input {
+    @apply flex h-10 w-full rounded-md border border-gray-300 bg-background px-3 py-2 text-sm
+    ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium
+    placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2
+    focus-visible:ring-primary focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+}
+
+/* Custom animation class */
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Body map hover effect */
+.body-part:hover {
+  cursor: pointer;
+  filter: brightness(1.2);
+  transition: all 0.2s ease-in-out;
+}
+
+/* Health data visualization styles */
+.chart-container {
+  @apply p-4 rounded-lg bg-white shadow-sm w-full h-full min-h-[300px];
+}
+
+/* Medical card styles */
+.medical-card {
+  @apply bg-white rounded-lg shadow-md p-4 md:p-6 transition-all duration-300 hover:shadow-lg border border-gray-100;
+}
+
+/* Responsive container */
+.container-responsive {
+  @apply container mx-auto px-4 md:px-6 py-4 md:py-8;
+}
